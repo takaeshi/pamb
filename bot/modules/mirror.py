@@ -116,7 +116,7 @@ class MirrorListener(listeners.MirrorListeners):
                     share_url += '/'
                 msg += f'\n\n<b>Index Link ⚠:</b> {share_url}'
             if self.tag is not None:
-                msg += f'\nUploaded By: @{self.tag}'
+                msg += f'\n\n<b>Uploaded By 🗣 :</b> @{self.tag}'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
