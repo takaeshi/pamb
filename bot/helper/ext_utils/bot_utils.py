@@ -21,7 +21,7 @@ class MirrorStatus:
     STATUS_ARCHIVING = "Archiving"
 
 
-PROGRESS_MAX_SIZE = 100 // 5
+PROGRESS_MAX_SIZE = 100 // 6
 PROGRESS_INCOMPLETE = ['▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓']
  
 SIZE_UNITS = [' B', ' KB', ' MB', ' GB', ' TB', ' PB']
@@ -68,15 +68,15 @@ def getDownloadByGid(gid):
 
 
 def get_progress_bar_string(status):
-    completed = status.processed_bytes() / 5
-    total = status.size_raw() / 5
+    completed = status.processed_bytes() / 6
+    total = status.size_raw() / 6
     if total == 0:
         p = 0
     else:
         p = round(completed * 100 / total)
     p = min(max(p, 0), 100)
-    cFull = p // 5
-    cPart = p % 5 - 1
+    cFull = p // 6
+    cPart = p % 6 - 1
     p_str = '▓' * cFull
     if cPart >= 0:
         p_str += PROGRESS_INCOMPLETE[cPart]
