@@ -21,9 +21,9 @@ class MirrorStatus:
     STATUS_ARCHIVING = "Archiving"
 
 
-PROGRESS_MAX_SIZE = 100 // 8
-PROGRESS_INCOMPLETE = ['█', '█', '█', '█', '█', '█', '█']
-
+PROGRESS_MAX_SIZE = 100 // 11
+PROGRESS_INCOMPLETE = ['█', '█', '█', '█', '█', '█', '█', '█', '█', '█']
+ 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
 
@@ -92,14 +92,14 @@ def get_readable_message():
             msg += f"<i>{download.name()}</i> - "
             msg += download.status()
             if download.status() != MirrorStatus.STATUS_ARCHIVING:
-                msg += f"\n<code>{get_progress_bar_string(download)}</code> \n\n<b>Percentage 🎃:</b> {download.progress()} of " \
+                msg += f"\n<code>{get_progress_bar_string(download)}</code> \n\n<b>Percentage 🎃 :</b> {download.progress()} of " \
                        f"{download.size()}" \
-                       f" \n<b>Speed 🚀:</b> {download.speed()} \n<b>Time Left 🕒:</b> {download.eta()} "
+                       f" \n<b>Speed 🚀 :</b> {download.speed()} \n<b>Time Left 🕒 :</b> {download.eta()} "
             if download.status() == MirrorStatus.STATUS_DOWNLOADING:
                 if hasattr(download, 'is_torrent'):
                     msg += f"| P: {download.aria_download().connections} " \
                            f"| S: {download.aria_download().num_seeders}"
-                msg += f"\n<b>Cancel 🚫:</b> <code>{download.gid()}</code>"
+                msg += f"\n<b>Cancel 🚫 :</b> <code>{download.gid()}</code>"
             msg += "\n\n"
         return msg
 
