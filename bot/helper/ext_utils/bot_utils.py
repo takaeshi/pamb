@@ -21,8 +21,8 @@ class MirrorStatus:
     STATUS_ARCHIVING = "Archiving"
 
 
-PROGRESS_MAX_SIZE = 100 // 11
-PROGRESS_INCOMPLETE = ['▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓']
+PROGRESS_MAX_SIZE = 100 // 17
+PROGRESS_INCOMPLETE = ['▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓', '▓']
  
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
@@ -93,7 +93,7 @@ def get_readable_message():
             msg += download.status()
             if download.status() != MirrorStatus.STATUS_ARCHIVING:
                 msg += f"\n<code>{get_progress_bar_string(download)}</code> <code>{download.progress()}</code>" \
-                       f"\n<b>Speed :</b> {download.speed()} \n<b>ETA :</b> {download.eta()} "
+                       f"\n<b>Speed :</b> {download.speed()} | <b>ETA :</b> {download.eta()} "
             if download.status() == MirrorStatus.STATUS_DOWNLOADING:
                 if hasattr(download, 'is_torrent'):
                     msg += f"\nPeers: {download.aria_download().connections} " \
