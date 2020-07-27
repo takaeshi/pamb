@@ -176,7 +176,7 @@ def _mirror(bot, update, isTar=False):
                 else:
                     link = file.get_file().file_path
     else:
-        tag = update.from_user.username
+        tag = update.chat.username
     if not bot_utils.is_url(link) and not bot_utils.is_magnet(link):
         sendMessage('No download source provided', bot, update)
         return
