@@ -108,15 +108,15 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onUploadComplete(self, link: str):
         with download_dict_lock:
-            msg = f'<b>Filename :</b> <code>{download_dict[self.uid].name()}</code>\n\n<b>Total Size :</b> <i>{download_dict[self.uid].size()}</i>\n\n<b>G-Drive Link ☁ :</b> {link}'            
+            msg = f'<b>Filename :</b> <code>{download_dict[self.uid].name()}</code>\n\n<b>💾 Total Size :</b> <i>{download_dict[self.uid].size()}</i>\n\n<b>☁ G-Drive Link :</b> {link}'            
             LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
             if INDEX_URL is not None:
                 share_url = requests.utils.requote_uri(f'{INDEX_URL}/{download_dict[self.uid].name()}')
                 if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
                     share_url += '/'
-                msg += f'\n\n<b>Index Link 🔗 :</b> {share_url}'
+                msg += f'\n\n<b>🔗 Index Link :</b> {share_url}'
             if self.tag is not None:
-                msg += f'\n\n<b>Uploaded By 🗣 :</b> @{self.tag}'
+                msg += f'\n\n<b>🗣 Uploaded By :</b> @{self.tag}'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
@@ -176,7 +176,7 @@ def _mirror(bot, update, isTar=False):
                 else:
                     link = file.get_file().file_path
     else:
-        tag = None
+        tag = update.from_user.username
     if not bot_utils.is_url(link) and not bot_utils.is_magnet(link):
         sendMessage('No download source provided', bot, update)
         return
