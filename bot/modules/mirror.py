@@ -115,6 +115,7 @@ class MirrorListener(listeners.MirrorListeners):
                 if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
                     share_url += '/'
                 msg += f'\n\n<b>🔗 Index Link :</b> {share_url}'
+                msg += f'\n\n<b>🗣 Uploaded By :</b> @{self.tag}'
             if self.tag is not None:
                 msg += f'\n\n<b>🗣 Uploaded By :</b> @{self.tag}'
             try:
