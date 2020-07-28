@@ -115,7 +115,7 @@ class MirrorListener(listeners.MirrorListeners):
                 if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
                     share_url += '/'
                 msg += f'\n\n<b>○ 📁 Index Link :</b> {share_url}'
-                msg += f'\n\n<b>○ 👤 Uploaded By :</b> <a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
+                msg += f'\n\n<b>○ 👤 #CC :</b> <a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
