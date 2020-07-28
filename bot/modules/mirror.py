@@ -108,14 +108,14 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onUploadComplete(self, link: str):
         with download_dict_lock:
-            msg = f'<b>○ Filename :</b> <code>{download_dict[self.uid].name()}</code>\n\n<b>○ 💾 Total Size :</b> <i>{download_dict[self.uid].size()}</i>\n\n<b>○ ☁ G-Drive Link :</b> {link}'            
+            msg = f'<b>○ 📬 Filename :</b> <code>{download_dict[self.uid].name()}</code>\n\n<b>○ 💾 Total Size :</b> <i>{download_dict[self.uid].size()}</i>\n\n<b>○ 🌍 G-Drive Link :</b> {link}'            
             LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
             if INDEX_URL is not None:
                 share_url = requests.utils.requote_uri(f'{INDEX_URL}/{download_dict[self.uid].name()}')
                 if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
                     share_url += '/'
-                msg += f'\n\n<b>○ 🔗 Index Link :</b> {share_url}'
-                msg += f'\n\n<b>○ 🗣 Uploaded By :</b> <a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
+                msg += f'\n\n<b>○ 📁 Index Link :</b> {share_url}'
+                msg += f'\n\n<b>○ 👤 Uploaded By :</b> <a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
