@@ -293,7 +293,7 @@ class GoogleDriveHelper:
                     err = str(e).replace('>', '').replace('<', '')
                 LOGGER.error(err)
                 return err
-            msg += f'<b>○ Drive Link:</b> "{self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id")}'
+            msg += f'<b>○ Drive Link:</b> {self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id")}'
             try:
                 msg += f' ({get_readable_file_size(int(meta.get("size")))}) '
                 if INDEX_URL is not None:
