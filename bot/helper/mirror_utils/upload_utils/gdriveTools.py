@@ -277,9 +277,9 @@ class GoogleDriveHelper:
                     err = str(e).replace('>', '').replace('<', '')
                 LOGGER.error(err)
                 return err
-            msg += f'<b>○ 🌀 File :</b> <code>{meta.get("name")}</code>' \
-                   f'\n\n<b>○ 🌏 Drive Link :</b> {self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format(dir_id)}' \
-                   f'\n\n<b>○ 💾 Size :</b> <code>{get_readable_file_size(self.transferred_size)}</code>'
+            msg += f'<b>○ 🌀 Folder Name :</b> <code>{meta.get("name")}</code>' \
+                   f'\n\n<b>○ 💾 Size :</b> <code>{get_readable_file_size(self.transferred_size)}</code>' \
+                   f'\n\n<b>○ 🌏 Drive Link :</b> {self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format(dir_id)}'
             if INDEX_URL is not None:
                 url = requests.utils.requote_uri(f'{INDEX_URL}/{meta.get("name")}/')
                 msg += f'\n\n<b>○ 📁 Index Link :</b> {url}'
@@ -294,10 +294,9 @@ class GoogleDriveHelper:
                     err = str(e).replace('>', '').replace('<', '')
                 LOGGER.error(err)
                 return err
-            msg += f'<b>○ 🌀 File :</b> <code>{file.get("name")}</code>' \
+            msg += f'<b>○ 🌀 File Name :</b> <code>{file.get("name")}</code>' \
+                   f' \n\n<b>○ 💾 Size :</b> <code>{get_readable_file_size(int(meta.get("size")))}</code> ' \
                    f'\n\n<b>○ 🌍 Drive Link :</b> {self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))}'
-            try:
-                msg += f' \n\n<b>○ 💾 Size :</b> <code>{get_readable_file_size(int(meta.get("size")))}</code> '
                 if INDEX_URL is not None:
                     url = requests.utils.requote_uri(f'{INDEX_URL}/{file.get("name")}')
                     msg += f'\n\n<b>○ 📁 Index Link :</b> {url}'
