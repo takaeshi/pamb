@@ -295,8 +295,9 @@ class GoogleDriveHelper:
                 LOGGER.error(err)
                 return err
             msg += f'<b>○ 🌀 File Name :</b> <code>{file.get("name")}</code>' \
-                   f' \n\n<b>○ 💾 Size :</b> <code>{get_readable_file_size(int(meta.get("size")))}</code> ' \
-                   f'\n\n<b>○ 🌍 Drive Link :</b> {self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))}'
+                   f'\n\n<b>○ 💾 Size :</b> <code>{get_readable_file_size(int(meta.get("size")))}</code>'
+            try:
+                msg += f'\n\n<b>○ 🌍 Drive Link :</b> {self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))}'
                 if INDEX_URL is not None:
                     url = requests.utils.requote_uri(f'{INDEX_URL}/{file.get("name")}')
                     msg += f'\n\n<b>○ 📁 Index Link :</b> {url}'
