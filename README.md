@@ -17,7 +17,7 @@ This project is heavily inspired from @out386 's telegram bot which is written i
 - Mirror telegram files
 
 
-
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/clitoris69/pamb/tree/master)
 
  
 
